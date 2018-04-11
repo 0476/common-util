@@ -13,22 +13,26 @@ import java.security.spec.X509EncodedKeySpec;
 
 
 /**
- *类描述:签名工具
- *
- *@Author:李光伟
- *@date:2015-8-21
- *@Version:1.1.0
+ * 
+ * @功能描述: 签名工具
+ * 
+ * @version: 1.0.0
+ * @author: ailikes
+ * @Date:   2018年4月11日 下午4:11:00
  */
 public class SignUtil {
 	
-	 /**
-     * @param source*待签名串儿* pemPath*私钥路径*
-     * @return  
-	 * @throws Exception 
-     * @功能描述:签名 RSA+SHA1withRSA(签名)
-     * @Author:李光伟
-     * @date:2015-8-20  下午05:48:26
-     * @Version:1.1.0
+    /**
+     * 
+     * @功能描述: 签名 RSA+SHA1withRSA(签名)
+     * 
+     * @param source 待签名串儿
+     * @param pemPath 私钥路径
+     * @return
+     * @throws Exception String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:12:03
      */
     public static String encryptSign(String source,String pemPath) throws Exception{
     	PrivateKey pk = getPrivateKeyByPath(pemPath);
@@ -36,14 +40,15 @@ public class SignUtil {
     }
     
     /**
-     * @param source
+     * 
+     * @功能描述: 根据秘钥串儿签名
+     * 
+     * @param source 被签名字符
      * @param keyCode 秘钥串儿
-     * @return
-     * @throws Exception  
-     * @功能描述:根据秘钥串儿签名
-     * @Author:李光伟
-     * @date:2015-12-30  上午10:58:37
-     * @Version:1.1.0
+     * @return String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:12:33
      */
     public static String encryptSign_(String source,String keyCode){
     	PrivateKey pk;
@@ -56,14 +61,16 @@ public class SignUtil {
     }
     
     /**
+     * 
+     * @功能描述:生成签名 
+     * 
      * @param pk
      * @param source
      * @return
-     * @throws Exception  
-     * @功能描述:生成签名
-     * @Author:李光伟
-     * @date:2015-12-30  上午10:58:12
-     * @Version:1.1.0
+     * @throws Exception String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:12:58
      */
     public static String sign(PrivateKey pk,String source) throws Exception{
     	byte[] sb = null;					
@@ -75,14 +82,16 @@ public class SignUtil {
     }
     
     /**
+     * 
+     * 功能描述:签名检查 
+     * 
      * @param source 签名前
-     * @param merSign加密串
+     * @param merSign 加密串
      * @param pemPath 公钥路径
-     * @throws Exception 
-     * @功能描述:验签
-     * @Author:李光伟
-     * @date:2015-8-21  下午02:49:33
-     * @Version:1.1.0
+     * @return Boolean
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:08:01
      */
     public static Boolean checkSign(String source,String merSign,String pemPath){
     	try {
@@ -95,14 +104,16 @@ public class SignUtil {
     }
     
     /**
-     * @param source
-     * @param merSign
-     * @param keyCode 秘钥串儿
-     * @throws Exception  
-     * @功能描述:根据秘钥串儿验签
-     * @Author:李光伟
-     * @date:2015-12-30  上午11:01:40
-     * @Version:1.1.0
+     * 
+     * 功能描述: 签名检查
+     * 
+     * @param source 签名前
+     * @param merSign 加密串
+     * @param pemPath 公钥路径
+     * @return Boolean
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:09:06
      */
     public static Boolean checkSign_(String source,String merSign,String keyCode){
     	PublicKey publicKey;
@@ -116,15 +127,16 @@ public class SignUtil {
     }
     
     /**
-     * @param source
-     * @param merSign
-     * @param publicKey
-     * @return
-     * @throws Exception  
-     * @功能描述:验证签名
-     * @Author:李光伟
-     * @date:2015-12-30  上午11:00:42
-     * @Version:1.1.0
+     * 
+     * 功能描述: 签名检查
+     * 
+     * @param source 签名前
+     * @param merSign 加密串
+     * @param pemPath 公钥路径
+     * @return Boolean
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:09:06
      */
     public static Boolean check(String source,String merSign,PublicKey publicKey){
 		Signature verifyalg;
@@ -142,25 +154,29 @@ public class SignUtil {
     }
     
     /**
+     * 
+     * 功能描述: base64 解密
+     * 
      * @param source
-     * @return 
-     * @throws IOException  
-     * @功能描述:base64 解密
-     * @Author:李光伟
-     * @date:2015-8-25  上午11:01:11
-     * @Version:1.1.0
+     * @return
+     * @throws IOException byte[]
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:09:59
      */
     public static byte [] BASE64Decode(String source) throws IOException{
     	return new BASE64Decoder().decodeBuffer(source);
     }
     
     /**
+     * 
+     * @功能描述: 获取公钥
+     * 
      * @param pubPemPath
-     * @return  
-     * @功能描述:获取公钥
-     * @Author:李光伟
-     * @date:2015-9-22  下午04:02:42
-     * @Version:1.1.0
+     * @return PublicKey
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:10:13
      */
     public static PublicKey getPublicKeyByPath(String pubPemPath){
     	FileInputStream in = null;
@@ -198,12 +214,14 @@ public class SignUtil {
     }
     
     /**
-     * @param privatePemPath
-     * @return  
+     * 
      * @功能描述:获取私钥
-     * @Author:李光伟
-     * @date:2015-9-22  下午04:35:57
-     * @Version:1.1.0
+     * 
+     * @param privatePemPath
+     * @return PrivateKey
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:10:29
      */
     public  static PrivateKey getPrivateKeyByPath(String privatePemPath){
     	File file = new File(privatePemPath);
@@ -253,7 +271,7 @@ public class SignUtil {
 		return pk;
     }
     
-    public static void main(String[] args) throws Exception {
-        System.out.println( SignUtil.encryptSign("123456","D:\\WORKSPACE-JRPT\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\jrpt-web\\WEB-INF\\classes\\conf\\prv.pem"));
-     }
+//    public static void main(String[] args) throws Exception {
+//        System.out.println( SignUtil.encryptSign("123456","D:\\WORKSPACE-JRPT\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\jrpt-web\\WEB-INF\\classes\\conf\\prv.pem"));
+//    }
 }
