@@ -8,19 +8,28 @@ import java.io.UnsupportedEncodingException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-
+/**
+ * 
+ * @功能描述: AES加密工具类
+ * 
+ * @version: 1.0.0
+ * @author: ailikes
+ * @Date:   2018年4月11日 下午4:17:30
+ */
 public class AES {
 
     public static final String CHAR_ENCODING = "UTF-8";
     public static final String AES_ALGORITHM = "AES/ECB/PKCS5Padding";
-     /**
-     * 加密
+    /**
      * 
-     * @param / data
-     *            待加密密内容
-     * @param /key
-     *            加密密钥
-     * @return
+     * @功能描述:加密 
+     * 
+     * @param data 待加密密内容
+     * @param key 加密密钥
+     * @return byte[]
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:17:15
      */
     public static byte[] encrypt(byte[] data, byte[] key) {
         if(key.length!=16){
@@ -40,13 +49,15 @@ public class AES {
     }
 
     /**
-     * 解密
      * 
-     * @param / content
-     *            待解密内容
-     * @param /password
-     *            解密密钥
-     * @return
+     * @功能描述: 解密
+     * 
+     * @param data 待解密内容
+     * @param key 解密密钥
+     * @return byte[]
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:17:44
      */
     public static byte[] decrypt(byte[] data, byte[] key) {
         if(key.length!=16){
@@ -121,7 +132,7 @@ public class AES {
         return new String(Base64.encode(genarateRandomKey()));
     }
     
-    public static void main(String[] args) {
-    	System.out.println(encryptWithKeyBase64("Mike$_中文", "e2_test_test_test_test_test_test"));
-	}
+//    public static void main(String[] args) {
+//    	System.out.println(encryptWithKeyBase64("Mike$_中文", "e2_test_test_test_test_test_test"));
+//	}
 }
