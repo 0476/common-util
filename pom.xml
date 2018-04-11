@@ -28,8 +28,8 @@
         </license>
     </licenses>
     <scm>
-        <url>https://gitee.com/junxinweike</url>
-        <connection>https://gitee.com/junxinweike/common-util.git</connection>
+        <url>https://github.com/AilikesXu</url>
+        <connection>https://github.com/AilikesXu/common-util.git</connection>
     </scm>
 
 	<properties>
