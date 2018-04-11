@@ -3,9 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ailikes</groupId>
 	<artifactId>common-util</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0-RELEASE</version>
 	<name>common-util</name>
 	<packaging>jar</packaging>
+	<description>工具类工程</description>
+	<url>https://github.com/AilikesXu/common-util.git</url>
 	<developers>
 	    <developer>
 	            <name>ailikes</name>
