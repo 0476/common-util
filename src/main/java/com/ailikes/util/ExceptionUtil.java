@@ -6,9 +6,14 @@ import java.io.UnsupportedEncodingException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 /**
- * @date 2014-07-24
+ * 
+ * 功能描述: 异常工具类
+ * 
+ * date:   2018年4月11日 下午5:16:00
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public final class ExceptionUtil {
 
@@ -18,12 +23,15 @@ public final class ExceptionUtil {
 	private static Logger logger = LoggerFactory.getLogger(ExceptionUtil.class);
 
 	/**
-	 * 将异常信息以字符串形式打印出来
 	 * 
+	 * 功能描述: 将异常信息以字符串形式打印出来
+	 *
 	 * @param e
-	 *            Exception
-	 * @return
-	 * @date 2012-9-12
+	 * @return String
+	 * date:   2018年4月11日 下午5:15:50
+	 * @author: ailikes
+	 * @version 1.0.0
+	 * @since: 1.0.0
 	 */
 	public static String toString(Throwable e) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();

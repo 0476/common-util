@@ -10,11 +10,12 @@ import redis.clients.jedis.ShardedJedis;
 
 /**
  * 
- * 〈Redis工具类〉<br>
+ * 功能描述: Redis工具类
  * 
- * @author chentianyu
- * @see [相关类/方法]（可选）
- * @since [产品/模块版本] （可选）
+ * date:   2018年4月11日 下午4:51:09
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class RedisShardUtil {
 
@@ -22,12 +23,15 @@ public class RedisShardUtil {
 
     /**
      * 
-     * 功能描述: 保存Map到redis中<br>
+     * 功能描述: 保存Map到redis中
      *
-     * @param ssoPrincipal
-     * @param authTimeout 对象存活时间 s
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * @param yncsid
+     * @param map
+     * @param authTimeout void
+     * date:   2018年4月11日 下午4:51:19
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static void saveMap(String yncsid, Map<String, String> map, int authTimeout) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -39,14 +43,15 @@ public class RedisShardUtil {
     }
     /**
      * 
-     * 功能描述: 按照Key值存入List<br>
+     * 功能描述: 按照Key值存入List
      *
-     * @autor wangkaining
      * @param listKey
      * @param listValue
-     * @param authTimeout
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * @param authTimeout void
+     * date:   2018年4月11日 下午4:51:29
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static void saveList(String listKey, String listValue, int authTimeout) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -59,14 +64,15 @@ public class RedisShardUtil {
     
     /**
      * 
-     * 功能描述: 保存set<br>
+     * 功能描述: 保存set
      *
-     * @autor wangkaining
      * @param setKey
      * @param setValue
-     * @param authTimeout
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * @param authTimeout void
+     * date:   2018年4月11日 下午4:51:39
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static void saveSet(String setKey, String setValue, int authTimeout) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -79,12 +85,15 @@ public class RedisShardUtil {
     
     /**
      * 
-     * 功能描述: 保存Map到redis中<br>
+     * 功能描述: 保存Map到redis中
      *
-     * @param ssoPrincipal
-     * @param authTimeout 对象存活时间 s
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * @param key
+     * @param value
+     * @param authTimeout void
+     * date:   2018年4月11日 下午4:51:48
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static void saveData(String key, String value, int authTimeout) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -99,8 +108,12 @@ public class RedisShardUtil {
      * 
      * 功能描述: 读取redis数据
      *
-     * @author 徐大伟
-     * @date 2014年12月24日下午10:15:24
+     * @param key
+     * @return String
+     * date:   2018年4月11日 下午4:51:57
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static String getData(String key) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -112,13 +125,14 @@ public class RedisShardUtil {
     }
     /**
      * 
-     * 功能描述: 按照key得打并删除<br>
+     * 功能描述:按照key获取数据并删除 
      *
-     * @autor wangkaining
      * @param key
-     * @return
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * @return String
+     * date:   2018年4月11日 下午4:52:05
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static String getDelData(String key) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -133,14 +147,15 @@ public class RedisShardUtil {
     }
     /**
      * 
-     * 功能描述: 读取redis并修改保存时间<br>
+     * 功能描述: 读取redis并修改保存时间
      *
-     * @autor wangkaining
-     * @param key 主键
-     * @param seconds  设置保存时间  注意传入此时间要大于0
-     * @return
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * @param key
+     * @param seconds
+     * @return String
+     * date:   2018年4月11日 下午4:52:25
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static String getData(String key,int seconds) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -155,8 +170,12 @@ public class RedisShardUtil {
      * 
      * 功能描述: 读取redis数据
      *
-     * @author 徐大伟
-     * @date 2014年12月24日下午10:15:24
+     * @param key
+     * @return Map
+     * date:   2018年4月11日 下午4:52:34
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static Map<String,String> getMap(String key) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -166,13 +185,17 @@ public class RedisShardUtil {
         jedis.disconnect();
         return map;
     }
+    
     /**
      * 
-     * 功能描述: 按照key读取List<br>
+     * 功能描述: 按照key读取List
      *
-     * @autor wangkaining
      * @param key
-     * @return
+     * @return List
+     * date:   2018年4月11日 下午4:52:42
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static List<String> getList(String key) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -182,13 +205,17 @@ public class RedisShardUtil {
         jedis.disconnect();
         return list;
     }
+    
     /**
      * 
-     * 功能描述: 取出set<br>
+     * 功能描述: 取出set
      *
-     * @autor wangkaining
      * @param key
-     * @return
+     * @return Set
+     * date:   2018年4月11日 下午4:52:54
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static Set<String> getSet(String key) {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
@@ -199,7 +226,17 @@ public class RedisShardUtil {
         return list;
     }
     
-    
+    /**
+     * 
+     * 功能描述: 按照KEY设置缓存时间
+     *
+     * @param key
+     * @param seconds void
+     * date:   2018年4月11日 下午4:53:30
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
     public static void expireByKey(String key,int seconds){
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
         shards.add(new JedisShardInfo("127.0.0.1", 6379));
@@ -207,46 +244,5 @@ public class RedisShardUtil {
         jedis.expire(key, seconds);
         jedis.disconnect();
     }
-    /**
-	 * 
-	 * 功能描述: 根据yncsid删除SsoPrincipal<br>
-	 *
-	 * @param yncsid
-	 * @param ssoPrincipal
-	 * @param authTimeout
-	 * @see [相关类/方法](可选)
-	 * @since [产品/模块版本](可选)
-	 */
-	public static void deleteSsoPrincipal(String yncsid){
-		List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
-		shards.add(new JedisShardInfo("127.0.0.1", 6379));
-		jedis = new ShardedJedis(shards);
-		jedis.del(yncsid);
-		jedis.disconnect();
-	}
 	
-	
-	
-	
-	
-	
-	public static void main(String [] args){
-	    RedisShardUtil.saveList("IP", "127.0.0.1", 100);
-	    RedisShardUtil.saveList("IP", "127.0.0.2", 100);
-	    RedisShardUtil.saveList("IP", "127.0.0.3", 100);
-	    
-	    List<String> ipList = RedisShardUtil.getList("IP");
-	    for(String ip : ipList){
-	        System.out.println("IP:"+ip);
-	    }
-	    
-	    RedisShardUtil.saveSet("IPSet", "127.0.0.1", 100);
-        RedisShardUtil.saveSet("IPSet", "127.0.0.1", 100);
-        RedisShardUtil.saveSet("IPSet", "127.0.0.3", 100);
-	    
-        Set<String> ipSet = RedisShardUtil.getSet("IPSet");
-        for(String ip : ipSet){
-            System.out.println("IPSet:"+ip);
-        }
-	}
 }

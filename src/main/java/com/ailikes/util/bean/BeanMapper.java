@@ -7,13 +7,16 @@ import java.util.List;
 import org.dozer.DozerBeanMapper;
 
 /**
- * 简单封装Dozer, 实现深度转换Bean<->Bean的Mapper.实现:
  * 
+ * 功能描述:  简单封装Dozer, 实现深度转换Bean
  * 1. 持有Mapper的单例.
  * 2. 返回值类型转换.
  * 3. 批量转换Collection中的所有对象.
  * 4. 区分创建新的B对象与将对象A值复制到已存在的B对象两种函数.
- * 
+ * date:   2018年4月11日 下午5:39:15
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class BeanMapper {
 

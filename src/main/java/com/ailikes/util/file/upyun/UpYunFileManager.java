@@ -120,14 +120,11 @@ public class UpYunFileManager implements FileManager {
 
 
 	/**
-	 * 读取文件
-	 * 
-	 * @param filePath
-	 *            文件路径（包含文件名）
-	 * @param file
-	 *            临时文件
-	 * @return true or false
-	 */
+     * 读取文件
+     * 
+     * @param filePath 文件路径（包含文件名）
+     * @param file 临时文件
+     */
 	public void redFile(String filePath, File file) {
 		UpYun upyun = new UpYun(bucketName, operatorName, operatorPwd);
 		// 切换 API 接口的域名接入点，默认为自动识别接入点

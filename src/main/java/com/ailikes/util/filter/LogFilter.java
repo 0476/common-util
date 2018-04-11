@@ -17,14 +17,16 @@ import org.slf4j.MDC;
 
 /**
  * 
- * 功能描述: <Pattern>%d{yyyy-MM-dd HH:mm:ss:SSS}[%p][%logger][seq:%X{seq}] - %m%n</Pattern> 带请求线程的输出，尤其是在多线程并发的时候适用
+ * 功能描述: 带请求线程的输出，尤其是在多线程并发的时候适用
  * 
- * @version 1.0.0
- * @author 徐大伟
+ * date: 2018年4月11日 下午4:49:47
+ * 
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class LogFilter implements Filter {
 
-    // private static final String WORD = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static Logger      logger    = LoggerFactory.getLogger(LogFilter.class);
     public static final String callIdKey = "callId";
 
@@ -36,8 +38,8 @@ public class LogFilter implements Filter {
 
     public void doFilter(ServletRequest request,
                          ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
-        // String callId = RandomStringUtils.random(10, WORD);
+                         FilterChain chain)
+            throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         String callId = UUID.randomUUID().toString().replace("-", "");
         MDC.put(LogFilter.callIdKey, callId);

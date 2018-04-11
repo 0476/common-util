@@ -46,7 +46,7 @@ public class ThriftServiceClientProxy {
      * 初始化方法
      * 
      * @author piaohailin
-     * @date 2014-5-9
+     * date 2014-5-9
      */
     public void init() throws Exception {
         TSocket transport = new TSocket(ip, port);
@@ -59,11 +59,6 @@ public class ThriftServiceClientProxy {
             throw e;
         }
 
-        // 原型
-        //      TSocket transport = new TSocket("127.0.0.1", 9999);
-        //      TProtocol protocol = new TCompactProtocol(new TFramedTransport(transport));
-        //      WebsiteService.IFace websiteService = new WebsiteService.Client(new TMultiplexedProtocol(protocol, "WebsiteService"));
-        // 反射,取得原型实例
         Class[] parameterTypes = new Class[] { TProtocol.class };
         Constructor constructor = Class.forName(serviceInterface + "$Client").getConstructor(parameterTypes);
         Object[] arguments = new Object[] { new TMultiplexedProtocol(protocol, serviceName) };
@@ -71,11 +66,14 @@ public class ThriftServiceClientProxy {
     }
 
     /**
-     * 是否打开
      * 
-     * @return
-     * @author piaohailin
-     * @date 2014-5-9
+     * 功能描述: 是否打开
+     *
+     * @return boolean
+     * date:   2018年4月11日 下午5:28:27
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public boolean isOpen() {
         boolean result = false;
@@ -88,12 +86,14 @@ public class ThriftServiceClientProxy {
     }
 
     /**
-     * 检查服务是否可用，如不不可用，则重新初始化
-     * 超时时间为1秒钟
      * 
-     * @return
-     * @author piaohailin
-     * @date 2014-5-9
+     * 功能描述: 检查服务是否可用，如不不可用，则重新初始化
+     *
+     * @return boolean
+     * date:   2018年4月11日 下午5:28:39
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public boolean check() {
         boolean flag = true;
@@ -140,11 +140,14 @@ public class ThriftServiceClientProxy {
     }
 
     /**
-     * 取得service原型
      * 
-     * @return
-     * @author piaohailin
-     * @date 2014-5-10
+     * 功能描述: 取得service原型
+     *
+     * @return Object
+     * date:   2018年4月11日 下午5:28:49
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public Object getClient() {
         return client;

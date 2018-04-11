@@ -8,10 +8,12 @@ import java.net.URLEncoder;
 
 /**
  * 
- * 〈Cookie的工具类〉<br> 
- * @author chentianyu
- * @see [相关类/方法]（可选）
- * @since [产品/模块版本] （可选）
+ * 功能描述: Cookie工具类
+ * 
+ * date:   2018年4月11日 下午5:42:27
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public abstract class CookieUtil {
 	

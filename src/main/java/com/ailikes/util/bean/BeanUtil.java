@@ -14,19 +14,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 
-
 /**
- * bean之间属性复制<br>
- * 〈功能详细描述〉
  * 
- * @author 管阳
- * @see [相关类/方法]（可选）
- * @since [产品/模块版本] （可选）
+ * 功能描述: bean之间属性复制
+ * 
+ * date: 2018年4月11日 下午5:37:22
+ * 
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class BeanUtil {
 
     /** 记录日志的变量 */
-    private static final Logger logger    = LoggerFactory.getLogger(BeanUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(BeanUtil.class);
 
     /**
      * 将一个 JavaBean 对象转化为一个 Map
@@ -35,8 +36,8 @@ public class BeanUtil {
      * @return 转化出来的 Map 对象
      */
     @SuppressWarnings({
-            "rawtypes",
-            "unchecked"
+                        "rawtypes",
+                        "unchecked"
     })
     public static Map convertBean(Object bean) {
         Class type = bean.getClass();
@@ -56,7 +57,7 @@ public class BeanUtil {
                 }
             }
         } catch (Exception e) {
-        	
+
         }
         return returnMap;
     }
@@ -98,14 +99,14 @@ public class BeanUtil {
     }
 
     /**
-     * 功能描述: bean属性复制<br>
-     * 〈功能详细描述〉
      * 
-     * @param source 源bean
-     * @param target 目标bean
-     * @return
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * 功能描述: bean属性复制
+     *
+     * @param source
+     * @param target void date: 2018年4月11日 下午5:37:39
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static void copyProperties(Object source,
                                       Object target) {
@@ -114,22 +115,22 @@ public class BeanUtil {
             // BeanUtils.copyProperties(source, target);
             org.apache.commons.beanutils.BeanUtils.copyProperties(target, source);
         } catch (IllegalAccessException e) {
-        	
+
         } catch (InvocationTargetException e) {
-        	
+
         }
     }
 
     /**
-     * 功能描述: bean属性复制<br>
-     * 〈功能详细描述〉
      * 
-     * @param source 源bean
-     * @param target 目标bean
-     * @param ignoreProperties 要忽略的属性
-     * @return
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * 功能描述: bean属性复制
+     *
+     * @param source
+     * @param target
+     * @param ignoreProperties void date: 2018年4月11日 下午5:37:49
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static void copyProperties(Object source,
                                       Object target,
@@ -139,14 +140,14 @@ public class BeanUtil {
 
     /**
      * 
-     * 功能描述:list复制 <br>
-     * 〈功能详细描述〉
-     * 
-     * @param sourList 源list
-     * @param clazz 目标list中元素类型class
-     * @return
-     * @see [相关类/方法](可选)
-     * @since [产品/模块版本](可选)
+     * 功能描述: list复制
+     *
+     * @param sourList
+     * @param clazz
+     * @return List date: 2018年4月11日 下午5:37:58
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     @SuppressWarnings("all")
     public static List copyList(Object sourList,
@@ -161,9 +162,9 @@ public class BeanUtil {
                         copyProperties(sObj, dObj);
                         dObjs.add(dObj);
                     } catch (InstantiationException e) {
-                    	
+
                     } catch (IllegalAccessException e) {
-                    	
+
                     }
                 }
             }

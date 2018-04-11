@@ -23,15 +23,17 @@ public class FileUtil
     }
 
     /**
-     *
+     * 
      * 功能描述: 保存文件
      *
      * @param newsRootPath
      * @param filename
-     * @param picFile      void
+     * @param fileByte
+     * @throws IOException void
+     * date:   2018年4月11日 下午5:26:31
+     * @author: ailikes
      * @version 1.0.0
-     * @author 徐大伟
-     * @throws IOException
+     * @since: 1.0.0
      */
     public static void saveFile(String newsRootPath, String filename, byte[] fileByte) throws IOException
     {

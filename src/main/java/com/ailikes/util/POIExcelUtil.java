@@ -25,16 +25,20 @@ public class POIExcelUtil {
 
     /**
      * 
-     * @param Map <String,String> maps 属性表，成员属性age为KEY，中文名称为VALUE
-     * @param List <T> list 需要导出的数据列表对象
-     * @param String type 文件类型 xls 或者 xlsx
-     * 
-     * @return Workbook 导出成功 null 导出失败
+     * 功能描述: 导出excel
+     *
+     * @param maps maps 属性表，成员属性age为KEY，中文名称为VALUE
+     * @param list 需要导出的数据列表对象
+     * @param type 文件类型 xls 或者 xlsx
+     * @return Workbook
+     * date:   2018年4月11日 下午5:09:38
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static <T> Workbook excelExport(Map<String, String> maps,
                                           List<T> list,
                                           String type) {
-
         Workbook wb = null;
         try {
             if (type.equals(FILE_EXTENSION_XLS)) {
@@ -104,12 +108,17 @@ public class POIExcelUtil {
     }
     /**
      * 
-     * @param Map <String,String> maps 属性表，成员属性age为KEY，中文名称为VALUE
-     * @param List <Map<String, Object>> list 需要导出的数据Map集合
-     * @param String type 文件类型 xls 或者 xlsx
-     * @param Map<String,Map<String,String>> 格式化
-     * 
-     * @return Workbook 导出成功 null 导出失败
+     * 功能描述: 
+     *
+     * @param maps 属性表，成员属性age为KEY，中文名称为VALUE
+     * @param list 需要导出的数据Map集合
+     * @param type 文件类型 xls 或者 xlsx
+     * @param format
+     * @return Workbook
+     * date:   2018年4月11日 下午5:10:37
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static Workbook excelExportByMap(Map<String, String> maps,
                                            List<Map<String, Object>> list,

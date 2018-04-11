@@ -12,11 +12,12 @@ import redis.clients.jedis.ShardedJedisPool;
 
 /**
  * 
- * redis链接管理对象，单例使用，放在初始化对象里<br>
- *
- * @author piaohailin
- * @see [相关类/方法]（可选）
- * @since [产品/模块版本] （可选）
+ * 功能描述: redis链接管理对象，单例使用，放在初始化对象里
+ * 
+ * date:   2018年4月11日 下午5:00:03
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class RedisShardClient {
     private String               addresses;                               // 中间用逗号分隔例如：127.0.0.1:6379,127.0.0.2:6379

@@ -14,17 +14,17 @@ import java.security.spec.X509EncodedKeySpec;
 
 /**
  * 
- * @功能描述: 签名工具
+ * 功能描述: 签名工具
  * 
  * @version: 1.0.0
  * @author: ailikes
- * @Date:   2018年4月11日 下午4:11:00
+ * date:   2018年4月11日 下午4:11:00
  */
 public class SignUtil {
 	
     /**
      * 
-     * @功能描述: 签名 RSA+SHA1withRSA(签名)
+     * 功能描述: 签名 RSA+SHA1withRSA(签名)
      * 
      * @param source 待签名串儿
      * @param pemPath 私钥路径
@@ -32,7 +32,7 @@ public class SignUtil {
      * @throws Exception String
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:12:03
+     * date:   2018年4月11日 下午4:12:03
      */
     public static String encryptSign(String source,String pemPath) throws Exception{
     	PrivateKey pk = getPrivateKeyByPath(pemPath);
@@ -41,14 +41,14 @@ public class SignUtil {
     
     /**
      * 
-     * @功能描述: 根据秘钥串儿签名
+     * 功能描述: 根据秘钥串儿签名
      * 
      * @param source 被签名字符
      * @param keyCode 秘钥串儿
      * @return String
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:12:33
+     * date:   2018年4月11日 下午4:12:33
      */
     public static String encryptSign_(String source,String keyCode){
     	PrivateKey pk;
@@ -62,7 +62,7 @@ public class SignUtil {
     
     /**
      * 
-     * @功能描述:生成签名 
+     * 功能描述:生成签名 
      * 
      * @param pk
      * @param source
@@ -70,7 +70,7 @@ public class SignUtil {
      * @throws Exception String
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:12:58
+     * date:   2018年4月11日 下午4:12:58
      */
     public static String sign(PrivateKey pk,String source) throws Exception{
     	byte[] sb = null;					
@@ -91,7 +91,7 @@ public class SignUtil {
      * @return Boolean
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:08:01
+     * date:   2018年4月11日 下午4:08:01
      */
     public static Boolean checkSign(String source,String merSign,String pemPath){
     	try {
@@ -105,15 +105,16 @@ public class SignUtil {
     
     /**
      * 
-     * 功能描述: 签名检查
-     * 
-     * @param source 签名前
-     * @param merSign 加密串
-     * @param pemPath 公钥路径
+     * 功能描述:  签名检查
+     *
+     * @param source
+     * @param merSign
+     * @param keyCode
      * @return Boolean
+     * date:   2018年4月11日 下午5:24:17
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:09:06
+     * @since: 1.0.0
      */
     public static Boolean checkSign_(String source,String merSign,String keyCode){
     	PublicKey publicKey;
@@ -129,14 +130,15 @@ public class SignUtil {
     /**
      * 
      * 功能描述: 签名检查
-     * 
-     * @param source 签名前
-     * @param merSign 加密串
-     * @param pemPath 公钥路径
+     *
+     * @param source
+     * @param merSign
+     * @param publicKey
      * @return Boolean
+     * date:   2018年4月11日 下午5:30:39
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:09:06
+     * @since: 1.0.0
      */
     public static Boolean check(String source,String merSign,PublicKey publicKey){
 		Signature verifyalg;
@@ -162,7 +164,7 @@ public class SignUtil {
      * @throws IOException byte[]
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:09:59
+     * date:   2018年4月11日 下午4:09:59
      */
     public static byte [] BASE64Decode(String source) throws IOException{
     	return new BASE64Decoder().decodeBuffer(source);
@@ -170,13 +172,13 @@ public class SignUtil {
     
     /**
      * 
-     * @功能描述: 获取公钥
+     * 功能描述: 获取公钥
      * 
      * @param pubPemPath
      * @return PublicKey
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:10:13
+     * date:   2018年4月11日 下午4:10:13
      */
     public static PublicKey getPublicKeyByPath(String pubPemPath){
     	FileInputStream in = null;
@@ -215,13 +217,13 @@ public class SignUtil {
     
     /**
      * 
-     * @功能描述:获取私钥
+     * 功能描述:获取私钥
      * 
      * @param privatePemPath
      * @return PrivateKey
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:10:29
+     * date:   2018年4月11日 下午4:10:29
      */
     public  static PrivateKey getPrivateKeyByPath(String privatePemPath){
     	File file = new File(privatePemPath);

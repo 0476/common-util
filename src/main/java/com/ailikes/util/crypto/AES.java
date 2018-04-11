@@ -10,11 +10,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 /**
  * 
- * @功能描述: AES加密工具类
+ * 功能描述: AES加密工具类
  * 
  * @version: 1.0.0
  * @author: ailikes
- * @Date:   2018年4月11日 下午4:17:30
+ * date:   2018年4月11日 下午4:17:30
  */
 public class AES {
 
@@ -22,14 +22,14 @@ public class AES {
     public static final String AES_ALGORITHM = "AES/ECB/PKCS5Padding";
     /**
      * 
-     * @功能描述:加密 
+     * 功能描述:加密 
      * 
      * @param data 待加密密内容
      * @param key 加密密钥
      * @return byte[]
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:17:15
+     * date:   2018年4月11日 下午4:17:15
      */
     public static byte[] encrypt(byte[] data, byte[] key) {
         if(key.length!=16){
@@ -50,14 +50,14 @@ public class AES {
 
     /**
      * 
-     * @功能描述: 解密
+     * 功能描述: 解密
      * 
      * @param data 待解密内容
      * @param key 解密密钥
      * @return byte[]
      * @version 1.0.0
      * @author ailikes
-     * @Date:   2018年4月11日 下午4:17:44
+     * date:   2018年4月11日 下午4:17:44
      */
     public static byte[] decrypt(byte[] data, byte[] key) {
         if(key.length!=16){

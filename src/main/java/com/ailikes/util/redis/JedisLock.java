@@ -3,14 +3,17 @@ package com.ailikes.util.redis;
 import redis.clients.jedis.Jedis;
 
 /**
- * Redis distributed lock implementation.
  * 
- * @author Alois Belaska <alois.belaska@gmail.com>
+ * 功能描述: Redis distributed lock implementation.
+ * 
+ * date:   2018年4月11日 下午4:47:21
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class JedisLock {
 
     Jedis   jedis;
-
     /**
      * Lock key path.
      */
@@ -30,10 +33,8 @@ public class JedisLock {
 
     /**
      * Detailed constructor with default acquire timeout 10000 msecs and lock expiration of 60000 msecs.
-     * 
      * @param jedis
      * @param lockKey
-     *            lock key (ex. account:1, ...)
      */
     public JedisLock(Jedis jedis, String lockKey) {
         this.jedis = jedis;
@@ -42,12 +43,9 @@ public class JedisLock {
 
     /**
      * Detailed constructor with default lock expiration of 60000 msecs.
-     * 
      * @param jedis
      * @param lockKey
-     *            lock key (ex. account:1, ...)
-     * @param timeoutSecs
-     *            acquire timeout in miliseconds (default: 10000 msecs)
+     * @param timeoutMsecs
      */
     public JedisLock(Jedis jedis, String lockKey, int timeoutMsecs) {
         this(jedis, lockKey);
@@ -56,14 +54,10 @@ public class JedisLock {
 
     /**
      * Detailed constructor.
-     * 
      * @param jedis
      * @param lockKey
-     *            lock key (ex. account:1, ...)
-     * @param timeoutSecs
-     *            acquire timeout in miliseconds (default: 10000 msecs)
+     * @param timeoutMsecs
      * @param expireMsecs
-     *            lock expiration in miliseconds (default: 60000 msecs)
      */
     public JedisLock(Jedis jedis, String lockKey, int timeoutMsecs, int expireMsecs) {
         this(jedis, lockKey, timeoutMsecs);
@@ -72,9 +66,7 @@ public class JedisLock {
 
     /**
      * Detailed constructor with default acquire timeout 10000 msecs and lock expiration of 60000 msecs.
-     * 
      * @param lockKey
-     *            lock key (ex. account:1, ...)
      */
     public JedisLock(String lockKey) {
         this(null, lockKey);
@@ -82,11 +74,8 @@ public class JedisLock {
 
     /**
      * Detailed constructor with default lock expiration of 60000 msecs.
-     * 
      * @param lockKey
-     *            lock key (ex. account:1, ...)
-     * @param timeoutSecs
-     *            acquire timeout in miliseconds (default: 10000 msecs)
+     * @param timeoutMsecs
      */
     public JedisLock(String lockKey, int timeoutMsecs) {
         this(null, lockKey, timeoutMsecs);
@@ -94,44 +83,54 @@ public class JedisLock {
 
     /**
      * Detailed constructor.
-     * 
      * @param lockKey
-     *            lock key (ex. account:1, ...)
-     * @param timeoutSecs
-     *            acquire timeout in miliseconds (default: 10000 msecs)
+     * @param timeoutMsecs
      * @param expireMsecs
-     *            lock expiration in miliseconds (default: 60000 msecs)
      */
     public JedisLock(String lockKey, int timeoutMsecs, int expireMsecs) {
         this(null, lockKey, timeoutMsecs, expireMsecs);
     }
 
     /**
-     * @return lock key
+     * 
+     * 功能描述: 获取锁
+     *
+     * @return String
+     * date:   2018年4月11日 下午4:48:33
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public String getLockKey() {
         return lockKey;
     }
 
     /**
-     * Acquire lock.
      * 
-     * @param jedis
-     * @return true if lock is acquired, false acquire timeouted
-     * @throws InterruptedException
-     *             in case of thread interruption
+     * 功能描述: Acquire lock.
+     *
+     * @return
+     * @throws InterruptedException boolean
+     * date:   2018年4月11日 下午4:48:47
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized boolean acquire() throws InterruptedException {
         return acquire(jedis);
     }
 
     /**
-     * Acquire lock.
      * 
+     * 功能描述: Acquire lock.
+     *
      * @param jedis
-     * @return true if lock is acquired, false acquire timeouted
-     * @throws InterruptedException
-     *             in case of thread interruption
+     * @return
+     * @throws InterruptedException boolean
+     * date:   2018年4月11日 下午4:48:55
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized boolean acquire(Jedis jedis) throws InterruptedException {
         int timeout = timeoutMsecs;
@@ -166,14 +165,27 @@ public class JedisLock {
     }
 
     /**
-     * Acqurired lock release.
+     * 
+     * 功能描述: Acqurired lock release.
+     * void
+     * date:   2018年4月11日 下午4:49:05
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized void release() {
         release(jedis);
     }
 
     /**
-     * Acqurired lock release.
+     * 
+     * 功能描述:  Acqurired lock release.
+     *
+     * @param jedis void
+     * date:   2018年4月11日 下午4:49:14
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized void release(Jedis jedis) {
         if (locked) {

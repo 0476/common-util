@@ -24,27 +24,27 @@ import com.ailikes.util.crypto.Encodes;
 import com.google.common.collect.Lists;
 /**
  * 
- * String工具类<br> 
- * @author Administrator
- * @see [相关类/方法]（可选）
- * @since [产品/模块版本] （可选）
+ * 功能描述: String工具类
+ * 
+ * date:   2018年4月11日 下午4:57:50
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class StringUtil extends org.apache.commons.lang3.StringUtils{
 
-	/**
-     * An empty immutable <code>String</code> array.
-     */
     public static final String[] EMPTY_STRING_ARRAY = new String[0];
 
     /**
-     * Assert a boolean expression, throwing <code>IllegalStateException</code>
-     * if the test result is <code>false</code>. Call isTrue if you wish to
-     * throw IllegalArgumentException on an assertion failure.
-     * <pre class="code">Assert.state(id == null, "The id property must not already be initialized");</pre>
+     * 
+     * 功能描述: 
      *
-     * @param expression a boolean expression
-     * @param message    the exception message to use if the assertion fails
-     * @throws IllegalStateException if expression is <code>false</code>
+     * @param expression
+     * @param message void
+     * date:   2018年4月11日 下午4:58:01
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static void state(boolean expression, String message) {
         if (!expression) {
@@ -103,11 +103,15 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
     }
 
     /**
-     * Determines if the String is not empty. A string is not empty if it is not
-     * null and has a length > 0.
+     * 
+     * 功能描述: 
      *
-     * @param string the string to check
-     * @return true if it is not empty, false otherwise.
+     * @param string
+     * @return boolean
+     * date:   2018年4月11日 下午5:22:18
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static boolean isNotEmpty(final String string) {
         return !isEmpty(string);
@@ -244,25 +248,16 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
     }
 
     /**
-     * <p>Checks if CharSequence contains a search CharSequence, handling {@code null}.
-     * This method uses {@link String#indexOf(String)} if possible.</p>
-     * <p/>
-     * <p>A {@code null} CharSequence will return {@code false}.</p>
-     * <p/>
-     * <pre>
-     * StringUtils.contains(null, *)     = false
-     * StringUtils.contains(*, null)     = false
-     * StringUtils.contains("", "")      = true
-     * StringUtils.contains("abc", "")   = true
-     * StringUtils.contains("abc", "a")  = true
-     * StringUtils.contains("abc", "z")  = false
-     * </pre>
+     * 
+     * 功能描述: 判断是否包含指定字符串
      *
-     * @param seq       the CharSequence to check, may be null
-     * @param searchSeq the CharSequence to find, may be null
-     * @return true if the CharSequence contains the search CharSequence,
-     *         false if not or {@code null} string input
-     * @since 3.0 Changed signature from contains(String, String) to contains(CharSequence, CharSequence)
+     * @param seq 字符串
+     * @param searchSeq 被查找的字符串
+     * @return boolean
+     * date:   2018年4月11日 下午4:58:32
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static boolean contains(CharSequence seq, CharSequence searchSeq) {
         if (seq == null || searchSeq == null) {
@@ -272,30 +267,6 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
     }
 
 
-    /**
-     * <p>Removes a substring only if it is at the end of a source string,
-     * otherwise returns the source string.</p>
-     * <p/>
-     * <p>A {@code null} source string will return {@code null}.
-     * An empty ("") source string will return the empty string.
-     * A {@code null} search string will return the source string.</p>
-     * <p/>
-     * <pre>
-     * StringUtils.removeEnd(null, *)      = null
-     * StringUtils.removeEnd("", *)        = ""
-     * StringUtils.removeEnd(*, null)      = *
-     * StringUtils.removeEnd("www.domain.com", ".com.")  = "www.domain.com"
-     * StringUtils.removeEnd("www.domain.com", ".com")   = "www.domain"
-     * StringUtils.removeEnd("www.domain.com", "domain") = "www.domain.com"
-     * StringUtils.removeEnd("abc", "")    = "abc"
-     * </pre>
-     *
-     * @param str    the source String to search, may be null
-     * @param remove the String to search for and remove, may be null
-     * @return the substring with the string removed if found,
-     *         {@code null} if null String input
-     * @since 2.1
-     */
     public static String removeEnd(String str, String remove) {
         if (isEmpty(str) || isEmpty(remove)) {
             return str;
@@ -306,18 +277,6 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
         return str;
     }
 
-    /**
-     * <p>Joins the elements of the provided <code>Collection</code> into
-     * a single String containing the provided elements.</p>
-     * <p/>
-     * <p>No delimiter is added before or after the list.
-     * A <code>null</code> separator is the same as an empty String ("").</p>
-     *
-     * @param collection the <code>Collection</code> of values to join together, may be null
-     * @param separator  the separator character to use, null treated as ""
-     * @return the joined String, <code>null</code> if null iterator input
-     * @since 2.3
-     */
     public static String join(Collection collection, String separator) {
         if (collection == null) {
             return null;
@@ -325,37 +284,12 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
         return join(collection.iterator(), separator);
     }
 
-    /**
-     * <p>Joins the elements of the provided <code>Collection</code> into
-     * a single String containing the provided elements.</p>
-     * <p/>
-     * <p>No delimiter is added before or after the list. Null objects or empty
-     * strings within the iteration are represented by empty strings.</p>
-     *
-     * @param collection the <code>Collection</code> of values to join together, may be null
-     * @param separator  the separator character to use
-     * @return the joined String, <code>null</code> if null iterator input
-     * @since 2.3
-     */
     public static String join(Collection collection, char separator) {
         if (collection == null) {
             return null;
         }
         return join(collection.iterator(), separator);
     }
-
-    /**
-     * <p>Joins the elements of the provided <code>Iterator</code> into
-     * a single String containing the provided elements.</p>
-     *
-     * <p>No delimiter is added before or after the list. Null objects or empty
-     * strings within the iteration are represented by empty strings.</p>
-     *
-     * @param iterator  the <code>Iterator</code> of values to join together, may be null
-     * @param separator  the separator character to use
-     * @return the joined String, <code>null</code> if null iterator input
-     * @since 2.0
-     */
     public static String join(Iterator iterator, char separator) {
         // handle null, zero and one elements before building a buffer
         if (iterator == null) {
@@ -383,17 +317,6 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
         return buf.toString();
     }
 
-    /**
-     * <p>Joins the elements of the provided <code>Iterator</code> into
-     * a single String containing the provided elements.</p>
-     * <p/>
-     * <p>No delimiter is added before or after the list.
-     * A <code>null</code> separator is the same as an empty String ("").</p>
-     *
-     * @param iterator  the <code>Iterator</code> of values to join together, may be null
-     * @param separator the separator character to use, null treated as ""
-     * @return the joined String, <code>null</code> if null iterator input
-     */
     public static String join(Iterator iterator, String separator) {
         // handle null, zero and one elements before building a buffer
         if (iterator == null) {
@@ -423,54 +346,11 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
         return buf.toString();
     }
 
-    /**
-     * <p>Splits the provided text into an array, separators specified.
-     * This is an alternative to using StringTokenizer.</p>
-     *
-     * <p>The separator is not included in the returned String array.
-     * Adjacent separators are treated as one separator.
-     * For more control over the split use the StrTokenizer class.</p>
-     *
-     * <p>A <code>null</code> input String returns <code>null</code>.
-     * A <code>null</code> separatorChars splits on whitespace.</p>
-     *
-     * <pre>
-     * StringUtils.split(null, *)         = null
-     * StringUtils.split("", *)           = []
-     * StringUtils.split("abc def", null) = ["abc", "def"]
-     * StringUtils.split("abc def", " ")  = ["abc", "def"]
-     * StringUtils.split("abc  def", " ") = ["abc", "def"]
-     * StringUtils.split("ab:cd:ef", ":") = ["ab", "cd", "ef"]
-     * </pre>
-     *
-     * @param str  the String to parse, may be null
-     * @param separatorChars  the characters used as the delimiters,
-     *  <code>null</code> splits on whitespace
-     * @return an array of parsed Strings, <code>null</code> if null String input
-     */
     public static String[] split(String str, String separatorChars) {
         return splitWorker(str, separatorChars, -1, false);
     }
 
-    /**
-     * Performs the logic for the <code>split</code> and
-     * <code>splitPreserveAllTokens</code> methods that return a maximum array
-     * length.
-     *
-     * @param str  the String to parse, may be <code>null</code>
-     * @param separatorChars the separate character
-     * @param max  the maximum number of elements to include in the
-     *  array. A zero or negative value implies no limit.
-     * @param preserveAllTokens if <code>true</code>, adjacent separators are
-     * treated as empty token separators; if <code>false</code>, adjacent
-     * separators are treated as one separator.
-     * @return an array of parsed Strings, <code>null</code> if null String input
-     */
     private static String[] splitWorker(String str, String separatorChars, int max, boolean preserveAllTokens) {
-        // Performance tuned for 2.0 (JDK1.4)
-        // Direct code is quicker than StringTokenizer.
-        // Also, StringTokenizer uses isSpace() not isWhitespace()
-
         if (str == null) {
             return null;
         }
@@ -687,9 +567,15 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils{
     }
     
     /**
-     * 转换为字节数组
-     * @param str
-     * @return
+     * 
+     * 功能描述: 转换为字节数组
+     *
+     * @param bytes
+     * @return String
+     * date:   2018年4月11日 下午5:03:23
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static String toString(byte[] bytes){
     	try {

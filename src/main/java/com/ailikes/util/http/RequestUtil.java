@@ -4,30 +4,28 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 
- * Copyright (C), 2002-2014,北京天道和元科技有限公司
- * FileName: RequestUtil.java
- * Author:   陈天宇
- * Date:     2014年12月31日 上午11:11:47
- * Description: 针对get地址参数进行操作     
- * History: //修改记录
- * <author>      <time>      <version>    <desc>
- * 修改人姓名             修改时间            版本号                  描述
+ * 功能描述: 针对URL地址参数进行操作     
+ * 
+ * date:   2018年4月11日 下午4:34:37
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class RequestUtil {
 	
-	/**
-	 * 
-	 * 功能描述: 将paramName和paramValue拼接到buffer后面<br>
-	 *
-	 * @param buffer
-	 * 						get请求地址
-	 * @param paramName
-	 * 						拼接参数名称
-	 * @param paramValue
-	 * 						拼接参数值
-	 * @see [相关类/方法](可选)
-	 * @since [产品/模块版本](可选)
-	 */
+    /**
+     * 
+     * 功能描述: 将paramName和paramValue拼接到buffer后面
+     *
+     * @param url
+     * @param paramName
+     * @param paramValue
+     * @return String
+     * date:   2018年4月11日 下午4:34:55
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
 	public static String addParam(String url, String paramName, String paramValue){
 		if(null != paramName && !"".equals(paramName)){
 			url = url + (url.indexOf("?") < 0 ? "?" : "&");
@@ -41,13 +39,14 @@ public class RequestUtil {
 	
 	/**
 	 * 
-	 * 功能描述: 根据http请求，获取发送请求的域名<br>
+	 * 功能描述: 根据http请求，获取发送请求的域名
 	 *
 	 * @param request
-	 * 					Http请求
-	 * @return
-	 * @see [相关类/方法](可选)
-	 * @since [产品/模块版本](可选)
+	 * @return String
+	 * date:   2018年4月11日 下午4:35:05
+	 * @author: ailikes
+	 * @version 1.0.0
+	 * @since: 1.0.0
 	 */
 	public static String getDomainByRequest(HttpServletRequest request){
 		StringBuffer url = request.getRequestURL();  
@@ -63,13 +62,14 @@ public class RequestUtil {
 	
 	/**
 	 * 
-	 * 功能描述: 根据http请求，获取发送请求的域名<br>
+	 * 功能描述: 根据http请求，获取发送请求的域名
 	 *
-	 * @param request
-	 * 					Http请求
-	 * @return
-	 * @see [相关类/方法](可选)
-	 * @since [产品/模块版本](可选)
+	 * @param url
+	 * @return String
+	 * date:   2018年4月11日 下午4:35:15
+	 * @author: ailikes
+	 * @version 1.0.0
+	 * @since: 1.0.0
 	 */
 	public static String getDomainByRequest(String url){
 		StringBuffer urlBuffer = new StringBuffer(url);  
@@ -84,13 +84,14 @@ public class RequestUtil {
 	}
 	/**
 	 * 
-	 * 功能描述: 按照targeturl全路径查找其申请资源<br>
+	 * 功能描述: 按照targeturl全路径查找其申请资源
 	 *
-	 * @autor wangkaining
 	 * @param url
-	 * @return
-	 * @see [相关类/方法](可选)
-	 * @since [产品/模块版本](可选)
+	 * @return String
+	 * date:   2018年4月11日 下午4:35:24
+	 * @author: ailikes
+	 * @version 1.0.0
+	 * @since: 1.0.0
 	 */
 	public static String getResByCompleteUrl(String url){
         StringBuffer urlBuffer = new StringBuffer(url);  
@@ -103,12 +104,14 @@ public class RequestUtil {
 	
 	/**
 	 * 
-	 * 功能描述: 根据request构造请求地址<br>
+	 * 功能描述:根据request构造请求地址 
 	 *
 	 * @param request
-	 * @return
-	 * @see [相关类/方法](可选)
-	 * @since [产品/模块版本](可选)
+	 * @return String
+	 * date:   2018年4月11日 下午4:35:33
+	 * @author: ailikes
+	 * @version 1.0.0
+	 * @since: 1.0.0
 	 */
     public static String buildRequestUrl(HttpServletRequest request) {
         final StringBuilder buffer = new StringBuilder();
@@ -122,12 +125,16 @@ public class RequestUtil {
     }
     
     /**
-     * 将当前请求中的QueryString拼接到指定地址后
+     * 
+     * 功能描述: 将当前请求中的QueryString拼接到指定地址后
+     *
      * @param request
-     * 					HttpRequestServlet
      * @param url
-     * 					请求地址
-     * @return
+     * @return String
+     * date:   2018年4月11日 下午4:35:44
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public static String appendQueryStr(HttpServletRequest request, String url) {
         final StringBuilder buffer = new StringBuilder();
@@ -139,7 +146,18 @@ public class RequestUtil {
         }
         return buffer.toString();
     }
-    
+    /**
+     * 
+     * 功能描述: 移除URL中参数
+     *
+     * @param url
+     * @param paramName
+     * @return String
+     * date:   2018年4月11日 下午4:36:06
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
     public static String removeParameter(String url, String paramName) {
     	if(null == paramName || "".equals(paramName)){
     		return url;
@@ -171,7 +189,18 @@ public class RequestUtil {
         int valStart = -1;
         int valEnd = -1;
     }
-
+    /**
+     * 
+     * 功能描述: 获取URL中参数
+     *
+     * @param url
+     * @param paramName
+     * @return String
+     * date:   2018年4月11日 下午4:36:06
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
     private static ParamOffsets getParamOffsets(String url, String paramName) {
         if(null == paramName || "".equals(paramName)){
         	return null;

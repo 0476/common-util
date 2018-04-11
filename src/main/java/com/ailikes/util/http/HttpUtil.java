@@ -15,20 +15,28 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 
 /**
- * @author Administrator
- *
+ * 
+ * 功能描述: Http请求工具类
+ * 
+ * date:   2018年4月11日 下午4:37:09
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class HttpUtil {
-
     /**
-     * 使用Get方式获取数据
      * 
-     * @param url
-     *            URL包括参数，http://HOST/XX?XX=XX&XXX=XXX
+     * 功能描述: 使用Get方式获取数据
+     *
+     * @param url URL包括参数,http://HOST/XX?XX=XX
      * @param charset
-     * @return
+     * @return String
+     * date:   2018年4月11日 下午4:39:39
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
-    public static String sendGet(String url, String charset) {
+    public static String sendGet(String url, String charset){
         String result = "";
         BufferedReader in = null;
         try {
@@ -36,15 +44,13 @@ public class HttpUtil {
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
             // 设置通用的请求属性
-            connection.setRequestProperty("accept", "*/*");
+            connection.setRequestProperty("accept", "*");
             connection.setRequestProperty("connection", "Keep-Alive");
-            connection.setRequestProperty("user-agent",
-                    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+            connection.setRequestProperty("user-agent","Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
             // 建立实际的连接
             connection.connect();
             // 定义 BufferedReader输入流来读取URL的响应
-            in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream(), charset));
+            in = new BufferedReader(new InputStreamReader(connection.getInputStream(), charset));
             String line;
             while ((line = in.readLine()) != null) {
                 result += line;
@@ -66,12 +72,19 @@ public class HttpUtil {
         return result;
     }
 
-    /**
-     * POST请求，字符串形式数据
-     * @param url 请求地址
-     * @param param 请求数据
-     * @param charset 编码方式
-     */
+     /**
+      * 
+      * 功能描述: POST请求，字符串形式数据
+      *
+      * @param url 请求地址
+      * @param param 请求数据
+      * @param charset 编码方式
+      * @return String
+      * date:   2018年4月11日 下午4:40:25
+      * @author: ailikes
+      * @version 1.0.0
+      * @since: 1.0.0
+      */
     public static String sendPostUrl(String url, String param, String charset) {
 
         PrintWriter out = null;
@@ -85,7 +98,7 @@ public class HttpUtil {
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
             // 设置通用的请求属性
-            conn.setRequestProperty("accept", "*/*");
+            conn.setRequestProperty("accept", "*");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
@@ -124,12 +137,19 @@ public class HttpUtil {
         }
         return result;
     }
-    /**
-     * POST请求，Map形式数据
-     * @param url 请求地址
-     * @param param 请求数据
-     * @param charset 编码方式
-     */
+     /**
+      * 
+      * 功能描述: POST请求，Map形式数据
+      *
+      * @param url 请求地址
+      * @param param 请求数据
+      * @param charset 编码方式
+      * @return String
+      * date:   2018年4月11日 下午4:41:02
+      * @author: ailikes
+      * @version 1.0.0
+      * @since: 1.0.0
+      */
     public static String sendPost(String url, Map<String, String> param,
             String charset) {
 
@@ -155,7 +175,7 @@ public class HttpUtil {
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
             // 设置通用的请求属性
-            conn.setRequestProperty("accept", "*/*");
+            conn.setRequestProperty("accept", "*");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
@@ -197,17 +217,6 @@ public class HttpUtil {
         }
         return result;
     }
-
-    public static void main(String[] args) {
-    }
-    
-    static HostnameVerifier hv = new HostnameVerifier() {
-        public boolean verify(String urlHostName, SSLSession session) {
-            System.out.println("Warning: URL Host: " + urlHostName + " vs. "
-                               + session.getPeerHost());
-            return true;
-        }
-    };
     
     private static void trustAllHttpsCertificates() throws Exception {
         javax.net.ssl.TrustManager[] trustAllCerts = new javax.net.ssl.TrustManager[1];
@@ -220,8 +229,13 @@ public class HttpUtil {
                 .getSocketFactory());
     }
 
-    static class miTM implements javax.net.ssl.TrustManager,
-            javax.net.ssl.X509TrustManager {
+    static HostnameVerifier hv = new HostnameVerifier() {
+        public boolean verify(String urlHostName, SSLSession session) {
+            return true;
+        }
+    };
+    
+    static class miTM implements javax.net.ssl.TrustManager,javax.net.ssl.X509TrustManager {
         public java.security.cert.X509Certificate[] getAcceptedIssuers() {
             return null;
         }

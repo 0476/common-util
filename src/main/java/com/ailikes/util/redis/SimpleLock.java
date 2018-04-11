@@ -4,10 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 分布式锁的简单用法
  * 
- * @author piaohailin
- * @date 2014-3-7
+ * 功能描述: 分布式锁的简单用法
+ * 
+ * date:   2018年4月11日 下午5:31:54
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class SimpleLock {
     private static Logger           logger = LoggerFactory.getLogger(SimpleLock.class);

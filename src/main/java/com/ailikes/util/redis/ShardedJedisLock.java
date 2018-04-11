@@ -1,11 +1,14 @@
 package com.ailikes.util.redis;
 
-import redis.clients.jedis.ShardedJedis;
-
 /**
- * Redis distributed lock implementation.
  * 
- * @author Alois Belaska <alois.belaska@gmail.com>
+ * 功能描述:
+ * 
+ * date: 2018年4月11日 下午4:56:48
+ * 
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class ShardedJedisLock {
 
@@ -30,10 +33,9 @@ public class ShardedJedisLock {
     boolean          locked       = false;
 
     /**
-     * Detailed constructor with default acquire timeout 10000 msecs and lock expiration of 60000 msecs.
      * 
-     * @param jedis
-     * @param lockKey lock key (ex. account:1, ...)
+     * @param redisShardClient
+     * @param lockKey
      */
     public ShardedJedisLock(RedisShardClient redisShardClient, String lockKey) {
         this.redisShardClient = redisShardClient;
@@ -41,11 +43,10 @@ public class ShardedJedisLock {
     }
 
     /**
-     * Detailed constructor with default lock expiration of 60000 msecs.
      * 
-     * @param jedis
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
+     * @param redisShardClient
+     * @param lockKey
+     * @param timeoutMsecs
      */
     public ShardedJedisLock(RedisShardClient redisShardClient, String lockKey, int timeoutMsecs) {
         this(redisShardClient, lockKey);
@@ -53,12 +54,11 @@ public class ShardedJedisLock {
     }
 
     /**
-     * Detailed constructor.
      * 
-     * @param jedis
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
-     * @param expireMsecs lock expiration in miliseconds (default: 60000 msecs)
+     * @param redisShardClient
+     * @param lockKey
+     * @param timeoutMsecs
+     * @param expireMsecs
      */
     public ShardedJedisLock(RedisShardClient redisShardClient, String lockKey, int timeoutMsecs, int expireMsecs) {
         this(redisShardClient, lockKey, timeoutMsecs);
@@ -66,59 +66,69 @@ public class ShardedJedisLock {
     }
 
     /**
-     * Detailed constructor with default acquire timeout 10000 msecs and lock expiration of 60000 msecs.
      * 
-     * @param lockKey lock key (ex. account:1, ...)
+     * @param lockKey
      */
     public ShardedJedisLock(String lockKey) {
         this(null, lockKey);
     }
 
     /**
-     * Detailed constructor with default lock expiration of 60000 msecs.
      * 
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
+     * @param lockKey
+     * @param timeoutMsecs
      */
     public ShardedJedisLock(String lockKey, int timeoutMsecs) {
         this(null, lockKey, timeoutMsecs);
     }
 
     /**
-     * Detailed constructor.
      * 
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
-     * @param expireMsecs lock expiration in miliseconds (default: 60000 msecs)
+     * @param lockKey
+     * @param timeoutMsecs
+     * @param expireMsecs
      */
     public ShardedJedisLock(String lockKey, int timeoutMsecs, int expireMsecs) {
         this(null, lockKey, timeoutMsecs, expireMsecs);
     }
 
     /**
-     * @return lock key
+     * 
+     * 功能描述: 获取key
+     *
+     * @return String date: 2018年4月11日 下午4:55:56
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public String getLockKey() {
         return lockKey;
     }
 
     /**
-     * Acquire lock.
      * 
-     * @param jedis
-     * @return true if lock is acquired, false acquire timeouted
-     * @throws InterruptedException in case of thread interruption
+     * 功能描述: Acquire lock.
+     *
+     * @return
+     * @throws InterruptedException boolean date: 2018年4月11日 下午4:55:40
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized boolean acquire() throws InterruptedException {
         return acquire(redisShardClient);
     }
 
     /**
-     * Acquire lock.
      * 
-     * @param jedis
-     * @return true if lock is acquired, false acquire timeouted
-     * @throws InterruptedException in case of thread interruption
+     * 功能描述: 获取锁
+     *
+     * @param redisShardClient
+     * @return
+     * @throws InterruptedException boolean date: 2018年4月11日 下午4:55:15
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized boolean acquire(RedisShardClient redisShardClient) throws InterruptedException {
         int timeout = timeoutMsecs;
@@ -154,14 +164,25 @@ public class ShardedJedisLock {
     }
 
     /**
-     * Acqurired lock release.
+     * 
+     * 功能描述: Acqurired lock release. void date: 2018年4月11日 下午4:55:06
+     * 
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized void release() {
         release(redisShardClient);
     }
 
     /**
-     * Acqurired lock release.
+     * 
+     * 功能描述: Acqurired lock release.
+     *
+     * @param redisShardClient void date: 2018年4月11日 下午4:54:59
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized void release(RedisShardClient redisShardClient) {
         if (locked) {

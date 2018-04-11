@@ -69,13 +69,15 @@ public class ALiYunSmsUtil {
     
     /**
      * 
-     * 功能描述:发送注册短信验证码 
-     * 
+     * 功能描述: 发送注册短信验证码 
+     *
      * @param phone
      * @param code
-     * @throws ClientException void
+     * @return Boolean
+     * date:   2018年4月11日 下午5:36:48
+     * @author: ailikes
      * @version 1.0.0
-     * @author 徐大伟
+     * @since: 1.0.0
      */
     public Boolean sendRegistSms(String phone,String code)  {
         try {
@@ -88,10 +90,14 @@ public class ALiYunSmsUtil {
     /**
      * 
      * 功能描述: 发送修改密码验证码
+     *
      * @param phone
-     * @param code void
+     * @param code
+     * @return Boolean
+     * date:   2018年4月11日 下午5:36:39
+     * @author: ailikes
      * @version 1.0.0
-     * @author 徐大伟
+     * @since: 1.0.0
      */
     public Boolean sendUpdatePasswordSms(String phone,String code)  {
         try {
@@ -104,12 +110,14 @@ public class ALiYunSmsUtil {
     /**
      * 
      * 功能描述: 绑银行卡验证码
-     * 
+     *
      * @param phone
      * @param code
      * @return Boolean
+     * date:   2018年4月11日 下午5:36:30
+     * @author: ailikes
      * @version 1.0.0
-     * @author 王佳田
+     * @since: 1.0.0
      */
     public Boolean sendBankCard(String phone,String code){
         try {

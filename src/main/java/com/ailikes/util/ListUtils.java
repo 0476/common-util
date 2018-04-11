@@ -11,30 +11,36 @@ import java.util.Map;
 
 public class ListUtils {  
   
-    /** 
-     * 分組依據接口，用于集合分組時，獲取分組依據 
-     *  
-     * @author ZhangLiKun 
-     * @title GroupBy 
-     * @date 2013-4-23 
-     */  
+    /**
+     * 
+     * 功能描述: 分组依据接口
+     * 
+     * date:   2018年4月11日 下午5:06:37
+     * @author: ailikes
+     * @version: 1.0.0
+     * @since: 1.0.0
+     */
     public interface GroupBy<T> {  
         T groupby(Object obj);  
     }  
   
-    /** 
-     *  
-     * @param colls 
-     * @param gb 
-     * @return 
-     */  
+    /**
+     * 
+     * 功能描述: 分组
+     *
+     * @param colls
+     * @param gb
+     * @return Map
+     * date:   2018年4月11日 下午5:07:06
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
     public static final <T extends Comparable<T>, D> Map<T, List<D>> group(Collection<D> colls, GroupBy<T> gb) {  
         if (colls == null || colls.isEmpty()) {  
-            System.out.println("分組集合不能為空!");  
             return null;  
         }  
         if (gb == null) {  
-            System.out.println("分組依據接口不能為Null!");  
             return null;  
         }  
         Iterator<D> iter = colls.iterator();  
@@ -52,15 +58,19 @@ public class ListUtils {
         }  
         return map;  
     }  
-    /** 
-     * 将List<V>按照V的methodName方法返回值（返回值必须为K类型）分组，合入到Map<K, List<V>>中<br> 
-     * 要保证入参的method必须为V的某一个有返回值的方法，并且该返回值必须为K类型 
-     *  
+    /**
+     * 
+     * 功能描述: 将List按照V的methodName方法返回值（返回值必须为K类型）分组，合入到Map中
+     *
      * @param list 待分组的列表 
      * @param map  存放分组后的map 
      * @param clazz  泛型V的类型 
      * @param methodName  方法名 
-     */  
+     * date:   2018年4月11日 下午5:07:27
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
     public static <K, V> void listGroup2Map(List<V> list, Map<K, List<V>> map, Class<V> clazz, String methodName) {  
         // 入参非法行校验  
         if (null == list || null == map || null == clazz || null == methodName) {  
@@ -78,12 +88,18 @@ public class ListUtils {
         // 正式分组  
         listGroup2Map(list, map, method);  
     }  
-    /** 
-     * 根据类和方法名，获取方法对象 
-     * @param clazz 
-     * @param methodName 
-     * @return 
-     */  
+    /**
+     * 
+     * 功能描述: 根据类和方法名，获取方法对象 
+     *
+     * @param clazz
+     * @param methodName
+     * @return Method
+     * date:   2018年4月11日 下午5:07:57
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
     public static Method getMethodByName(Class<?> clazz, String methodName) {  
         Method method = null;  
         // 入参不能为空  
@@ -100,14 +116,18 @@ public class ListUtils {
   
         return method;  
     }  
-    /** 
-     * 将List<V>按照V的某个方法返回值（返回值必须为K类型）分组，合入到Map<K, List<V>>中<br> 
-     * 要保证入参的method必须为V的某一个有返回值的方法，并且该返回值必须为K类型 
-     *  
-     * @param list 待分组的列表 
-     * @param map 存放分组后的map 
-     * @param method 方法 
-     */  
+    /**
+     * 
+     * 功能描述: 将List按照V的某个方法返回值（返回值必须为K类型）分组，合入到Map中 
+     *
+     * @param list
+     * @param map
+     * @param method void
+     * date:   2018年4月11日 下午5:08:05
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
+     */
     @SuppressWarnings("unchecked")  
     public static <K, V> void listGroup2Map(List<V> list, Map<K, List<V>> map, Method method) {  
         // 入参非法行校验  

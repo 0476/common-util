@@ -35,11 +35,12 @@ import java.security.Signature;
 
 /**
  * 
- * @功能描述: RAS加密类
+ * 功能描述: RAS加密类
  * 
- * @version: 1.0.0
+ * date:   2018年4月11日 下午4:30:19
  * @author: ailikes
- * @Date:   2018年4月11日 下午4:14:03
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class RSAUtil {
 
@@ -62,13 +63,14 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 生成密钥对
-     * 
+     * 功能描述: 生成密钥对
+     *
      * @param filePath 生成密钥的路径
-     * @return Map<String,String>
+     * @return Map
+     * date:   2018年4月11日 下午4:30:31
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:14:20
+     * @since: 1.0.0
      */
     public static Map<String, String> generateKeyPair(String filePath) {
         try {
@@ -111,14 +113,15 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 获取公钥
-     * 
+     * 功能描述: 获取公钥
+     *
      * @param key 密钥字符串（经过base64编码）
      * @return
      * @throws Exception PublicKey
+     * date:   2018年4月11日 下午4:30:53
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:14:32
+     * @since: 1.0.0
      */
     public static PublicKey getPublicKey(String key) throws Exception {
         byte[] keyBytes;
@@ -131,14 +134,15 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 获取私钥
-     * 
+     * 功能描述: 获取私钥
+     *
      * @param key 密钥字符串（经过base64编码）
      * @return
      * @throws Exception PrivateKey
+     * date:   2018年4月11日 下午4:31:09
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:14:58
+     * @since: 1.0.0
      */
     public static PrivateKey getPrivateKey(String key) throws Exception {
         byte[] keyBytes;
@@ -151,14 +155,15 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 得到密钥字符串（经过base64编码）
-     * 
+     * 功能描述: 得到密钥字符串（经过base64编码）
+     *
      * @param key
      * @return
      * @throws Exception String
+     * date:   2018年4月11日 下午4:31:21
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:15:14
+     * @since: 1.0.0
      */
     public static String getKeyString(Key key) throws Exception {
         byte[] keyBytes = key.getEncoded();
@@ -168,14 +173,15 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 使用公钥对明文进行加密，返回BASE64编码的字符串
-     * 
+     * 功能描述: 使用公钥对明文进行加密，返回BASE64编码的字符串
+     *
      * @param privateKey
      * @param plainText
      * @return String
+     * date:   2018年4月11日 下午4:31:33
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:15:26
+     * @since: 1.0.0
      */
     public static String encrypt(PrivateKey privateKey,
                                  String plainText) {
@@ -195,14 +201,15 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 使用keystore对明文进行加密
-     * 
+     * 功能描述: 使用keystore对明文进行加密
+     *
      * @param publicKeystore 公钥文件路径
      * @param plainText 明文
      * @return String
+     * date:   2018年4月11日 下午4:31:43
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:15:44
+     * @since: 1.0.0
      */
     public static String encrypt(String publicKeystore,
                                  String plainText) {
@@ -235,14 +242,15 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 使用私钥对明文密文进行解密
-     * 
+     * 功能描述: 使用私钥对明文密文进行解密
+     *
      * @param privateKey
      * @param enStr
      * @return String
+     * date:   2018年4月11日 下午4:32:09
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:16:04
+     * @since: 1.0.0
      */
     public static String decrypt(PrivateKey privateKey,
                                  String enStr) {
@@ -272,14 +280,15 @@ public class RSAUtil {
 
     /**
      * 
-     * @功能描述: 使用keystore对密文进行解密
-     * 
+     * 功能描述: 使用keystore对密文进行解密 
+     *
      * @param privateKeystore 私钥路径
      * @param enStr 密文
      * @return String
+     * date:   2018年4月11日 下午4:32:20
+     * @author: ailikes
      * @version 1.0.0
-     * @author ailikes
-     * @Date:   2018年4月11日 下午4:16:13
+     * @since: 1.0.0
      */
     public static String decrypt(String privateKeystore,
                                  String enStr) {
@@ -302,8 +311,6 @@ public class RSAUtil {
                 sb.append(new String(doFinal));
             }
             dataReturn = sb.toString();
-
-            // byte[] deBytes = cipher.doFinal((new BASE64Decoder()).decodeBuffer(enStr));
             return new String(dataReturn);
         } catch (InvalidKeyException e) {
             e.printStackTrace();

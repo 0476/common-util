@@ -123,7 +123,7 @@ public class ThriftServiceClientProxyFactory implements FactoryBean, Initializin
      * 检查客户端存活状态
      * 
      * @author piaohailin
-     * @date 2014-5-9
+     * date 2014-5-9
      */
     private void check() {
         if (clients != null && clients.size() > 0) {
@@ -148,7 +148,7 @@ public class ThriftServiceClientProxyFactory implements FactoryBean, Initializin
      * 
      * @return
      * @author piaohailin
-     * @date 2014-5-9
+     * date 2014-5-9
      */
     public ThriftServiceClientProxy getThriftServiceClientProxy() {
         ThriftServiceClientProxy result = null;

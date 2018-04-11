@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * 功能描述: json工具类 功能详细描述：提供bean与json之间的转换和list与json之间的转换
  * 
  * @author 徐大伟
- * @date 2014-12-28
+ * date 2014-12-28
  */
 public class JacksonMapperUtil {
     /** 记录日志的变量 */
@@ -103,16 +103,15 @@ public class JacksonMapperUtil {
 
     /**
      * 
-     * 功能描述: <br>
-     * 
-     * @param <T>
-     * 
+     * 功能描述: JSON转List
+     *
      * @param json
-     * @param type
-     * @return
-     * @throws IOException
-     * @throws JsonMappingException
-     * @throws JsonParseException
+     * @param clazz
+     * @return List
+     * date:   2018年4月11日 下午5:39:57
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     @SuppressWarnings("unchecked")
     public static <T> List<T> jsonToList(String json,
@@ -187,7 +186,7 @@ public class JacksonMapperUtil {
     }
     /**
      * 
-     * 功能描述: <br>
+     * 功能描述: 
      * 
      * @param t
      * @return

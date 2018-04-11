@@ -41,7 +41,7 @@ public class ThriftServer implements ApplicationContextAware {
      * @throws IllegalArgumentException 
      * @throws IllegalAccessException 
      * @throws InstantiationException 
-     * @date 2014-4-9
+     * date 2014-4-9
      */
     public void start() throws TTransportException, NoSuchMethodException, SecurityException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         logger.info("start thrift server");

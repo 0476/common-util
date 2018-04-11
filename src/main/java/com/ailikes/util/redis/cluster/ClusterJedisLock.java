@@ -1,9 +1,13 @@
 package com.ailikes.util.redis.cluster;
 
 /**
- * Redis distributed lock implementation.
  * 
- * @author Alois Belaska <alois.belaska@gmail.com>
+ * 功能描述: Redis distributed lock implementation.
+ * 
+ * date:   2018年4月11日 下午4:43:15
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public class ClusterJedisLock {
 
@@ -28,9 +32,8 @@ public class ClusterJedisLock {
 
     /**
      * Detailed constructor with default acquire timeout 10000 msecs and lock expiration of 60000 msecs.
-     * 
-     * @param jedis
-     * @param lockKey lock key (ex. account:1, ...)
+     * @param client
+     * @param lockKey
      */
     public ClusterJedisLock(RedisClusterClient client, String lockKey) {
         this.client = client;
@@ -39,24 +42,15 @@ public class ClusterJedisLock {
 
     /**
      * Detailed constructor with default lock expiration of 60000 msecs.
-     * 
-     * @param jedis
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
+     * @param client
+     * @param lockKey
+     * @param timeoutMsecs
      */
     public ClusterJedisLock(RedisClusterClient client, String lockKey, int timeoutMsecs) {
         this(client, lockKey);
         this.timeoutMsecs = timeoutMsecs;
     }
 
-    /**
-     * Detailed constructor.
-     * 
-     * @param jedis
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
-     * @param expireMsecs lock expiration in miliseconds (default: 60000 msecs)
-     */
     public ClusterJedisLock(RedisClusterClient client, String lockKey, int timeoutMsecs, int expireMsecs) {
         this(client, lockKey, timeoutMsecs);
         this.expireMsecs = expireMsecs;
@@ -64,8 +58,7 @@ public class ClusterJedisLock {
 
     /**
      * Detailed constructor with default acquire timeout 10000 msecs and lock expiration of 60000 msecs.
-     * 
-     * @param lockKey lock key (ex. account:1, ...)
+     * @param lockKey
      */
     public ClusterJedisLock(String lockKey) {
         this(null, lockKey);
@@ -73,9 +66,8 @@ public class ClusterJedisLock {
 
     /**
      * Detailed constructor with default lock expiration of 60000 msecs.
-     * 
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
+     * @param lockKey
+     * @param timeoutMsecs
      */
     public ClusterJedisLock(String lockKey, int timeoutMsecs) {
         this(null, lockKey, timeoutMsecs);
@@ -83,39 +75,54 @@ public class ClusterJedisLock {
 
     /**
      * Detailed constructor.
-     * 
-     * @param lockKey lock key (ex. account:1, ...)
-     * @param timeoutSecs acquire timeout in miliseconds (default: 10000 msecs)
-     * @param expireMsecs lock expiration in miliseconds (default: 60000 msecs)
+     * @param lockKey
+     * @param timeoutMsecs
+     * @param expireMsecs
      */
     public ClusterJedisLock(String lockKey, int timeoutMsecs, int expireMsecs) {
         this(null, lockKey, timeoutMsecs, expireMsecs);
     }
 
     /**
-     * @return lock key
+     * 
+     * 功能描述: 获取锁
+     *
+     * @return String
+     * date:   2018年4月11日 下午4:45:07
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public String getLockKey() {
         return lockKey;
     }
 
     /**
-     * Acquire lock.
      * 
-     * @param jedis
-     * @return true if lock is acquired, false acquire timeouted
-     * @throws InterruptedException in case of thread interruption
+     * 功能描述: Acquire lock.
+     *
+     * @return
+     * @throws InterruptedException boolean
+     * date:   2018年4月11日 下午4:45:38
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized boolean acquire() throws InterruptedException {
         return acquire(client);
     }
 
     /**
-     * Acquire lock.
      * 
-     * @param jedis
-     * @return true if lock is acquired, false acquire timeouted
-     * @throws InterruptedException in case of thread interruption
+     * 功能描述: Acquire lock.
+     *
+     * @param client
+     * @return
+     * @throws InterruptedException boolean
+     * date:   2018年4月11日 下午4:45:58
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized boolean acquire(RedisClusterClient client) throws InterruptedException {
         int timeout = timeoutMsecs;
@@ -151,14 +158,27 @@ public class ClusterJedisLock {
     }
 
     /**
-     * Acqurired lock release.
+     * 
+     * 功能描述: Acqurired lock release.
+     * void
+     * date:   2018年4月11日 下午4:46:08
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized void release() {
         release(client);
     }
 
     /**
-     * Acqurired lock release.
+     * 
+     * 功能描述:  Acqurired lock release.
+     *
+     * @param client void
+     * date:   2018年4月11日 下午4:46:18
+     * @author: ailikes
+     * @version 1.0.0
+     * @since: 1.0.0
      */
     public synchronized void release(RedisClusterClient client) {
         if (locked) {

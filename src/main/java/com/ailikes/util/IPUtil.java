@@ -14,9 +14,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 系统信息工具类
  * 
- * @date 2013-5-6
+ * 功能描述: 系统信息工具类
+ * 
+ * date:   2018年4月11日 下午5:05:46
+ * @author: ailikes
+ * @version: 1.0.0
+ * @since: 1.0.0
  */
 public final class IPUtil {
 
@@ -26,10 +30,14 @@ public final class IPUtil {
 	}
 
 	/**
-	 * 取到当前机器的IP地址
 	 * 
-	 * @return
-	 * @date 2013-5-6
+	 * 功能描述: 取到当前机器的IP地址
+	 *
+	 * @return String
+	 * date:   2018年4月11日 下午5:05:56
+	 * @author: ailikes
+	 * @version 1.0.0
+	 * @since: 1.0.0
 	 */
 	public static String getIp() {
 		String hostIp = null;
@@ -73,10 +81,16 @@ public final class IPUtil {
 		}
 		return sb.toString();
 	}
-
+	
 	/**
-	 * 获取服务器名称
-	 * @return
+	 * 
+	 * 功能描述: 获取服务器名称
+	 *
+	 * @return String
+	 * date:   2018年4月11日 下午5:06:06
+	 * @author: ailikes
+	 * @version 1.0.0
+	 * @since: 1.0.0
 	 */
 	public static String getHostName() {
 		String hostName = null;
