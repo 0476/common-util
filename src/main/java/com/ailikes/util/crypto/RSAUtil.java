@@ -35,11 +35,11 @@ import java.security.Signature;
 
 /**
  * 
- * 类描述:用于RAS加密
- *
- * @Author:贾昌强
- * @date:2015年8月10日
- * @Version:1.1.0
+ * @功能描述: RAS加密类
+ * 
+ * @version: 1.0.0
+ * @author: ailikes
+ * @Date:   2018年4月11日 下午4:14:03
  */
 public class RSAUtil {
 
@@ -61,10 +61,14 @@ public class RSAUtil {
     }
 
     /**
-     * 生成密钥对
+     * 
+     * @功能描述: 生成密钥对
      * 
      * @param filePath 生成密钥的路径
-     * @return
+     * @return Map<String,String>
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:14:20
      */
     public static Map<String, String> generateKeyPair(String filePath) {
         try {
@@ -106,10 +110,15 @@ public class RSAUtil {
     }
 
     /**
-     * 得到公钥
+     * 
+     * @功能描述: 获取公钥
      * 
      * @param key 密钥字符串（经过base64编码）
-     * @throws Exception
+     * @return
+     * @throws Exception PublicKey
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:14:32
      */
     public static PublicKey getPublicKey(String key) throws Exception {
         byte[] keyBytes;
@@ -121,10 +130,15 @@ public class RSAUtil {
     }
 
     /**
-     * 得到私钥
+     * 
+     * @功能描述: 获取私钥
      * 
      * @param key 密钥字符串（经过base64编码）
-     * @throws Exception
+     * @return
+     * @throws Exception PrivateKey
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:14:58
      */
     public static PrivateKey getPrivateKey(String key) throws Exception {
         byte[] keyBytes;
@@ -136,9 +150,15 @@ public class RSAUtil {
     }
 
     /**
-     * 得到密钥字符串（经过base64编码）
      * 
+     * @功能描述: 得到密钥字符串（经过base64编码）
+     * 
+     * @param key
      * @return
+     * @throws Exception String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:15:14
      */
     public static String getKeyString(Key key) throws Exception {
         byte[] keyBytes = key.getEncoded();
@@ -147,32 +167,19 @@ public class RSAUtil {
     }
 
     /**
-     * ################################################################################
-     * ###########################以下是加密解密#######################################
-     * ################################################################################
-     */
-
-    /**
-     * 使用公钥对明文进行加密，返回BASE64编码的字符串
      * 
-     * @param publicKey
+     * @功能描述: 使用公钥对明文进行加密，返回BASE64编码的字符串
+     * 
+     * @param privateKey
      * @param plainText
-     * @return
+     * @return String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:15:26
      */
     public static String encrypt(PrivateKey privateKey,
                                  String plainText) {
         try {
-            /*cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-            byte[] data = plainText.getBytes();
-            byte[] dataReturn = null;
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < data.length; i += 100) {
-                byte[] doFinal = cipher.doFinal(ArrayUtils.subarray(data, i, i + 100));
-                sb.append(new String(doFinal));
-                dataReturn = ArrayUtils.addAll(dataReturn, doFinal);
-            }
-            // byte[] enBytes = cipher.doFinal(plainText.getBytes());
-            return (new BASE64Encoder()).encode(dataReturn);*/
             sig.initSign(privateKey);
             sig.update(plainText.getBytes());
             byte[] sb = null;       
@@ -181,18 +188,21 @@ public class RSAUtil {
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         } catch (SignatureException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
     }
 
     /**
-     * 使用keystore对明文进行加密
+     * 
+     * @功能描述: 使用keystore对明文进行加密
      * 
      * @param publicKeystore 公钥文件路径
      * @param plainText 明文
-     * @return
+     * @return String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:15:44
      */
     public static String encrypt(String publicKeystore,
                                  String plainText) {
@@ -206,18 +216,6 @@ public class RSAUtil {
             }
             br.close();
             fr.close();
-            /*cipher.init(Cipher.ENCRYPT_MODE, getPublicKey(publicKeyString));
-            // byte[] enBytes = cipher.doFinal(plainText.getBytes());
-
-            byte[] data = plainText.getBytes();
-            byte[] dataReturn = null;
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < data.length; i += 100) {
-                byte[] doFinal = cipher.doFinal(ArrayUtils.subarray(data, i, i + 100));
-                sb.append(new String(doFinal));
-                dataReturn = ArrayUtils.addAll(dataReturn, doFinal);
-            }
-            return (new BASE64Encoder()).encode(dataReturn);*/
             sig.initSign(getPrivateKey(publicKeystore));
             sig.update(plainText.getBytes());
             byte[] sb = null;       
@@ -236,11 +234,15 @@ public class RSAUtil {
     }
 
     /**
-     * 使用私钥对明文密文进行解密
+     * 
+     * @功能描述: 使用私钥对明文密文进行解密
      * 
      * @param privateKey
      * @param enStr
-     * @return
+     * @return String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:16:04
      */
     public static String decrypt(PrivateKey privateKey,
                                  String enStr) {
@@ -269,11 +271,15 @@ public class RSAUtil {
     }
 
     /**
-     * 使用keystore对密文进行解密
+     * 
+     * @功能描述: 使用keystore对密文进行解密
      * 
      * @param privateKeystore 私钥路径
      * @param enStr 密文
-     * @return
+     * @return String
+     * @version 1.0.0
+     * @author ailikes
+     * @Date:   2018年4月11日 下午4:16:13
      */
     public static String decrypt(String privateKeystore,
                                  String enStr) {
@@ -313,7 +319,7 @@ public class RSAUtil {
         return null;
     }
     
-    public static void main(String[] args) {
-       System.out.println( RSAUtil.encrypt("D:\\WORKSPACE-JRPT\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\jrpt-web\\WEB-INF\\classes\\conf\\prv.pem", "asdasd3456"));
-    }
+//    public static void main(String[] args) {
+//       System.out.println( RSAUtil.encrypt("D:\\WORKSPACE-JRPT\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\jrpt-web\\WEB-INF\\classes\\conf\\prv.pem", "asdasd3456"));
+//    }
 }
