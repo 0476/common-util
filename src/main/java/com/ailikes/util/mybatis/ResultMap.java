@@ -2,7 +2,7 @@ package com.ailikes.util.mybatis;
 
 import java.util.HashMap;
 
-import com.ailikes.util.StringUtil;
+import com.ailikes.util.string.StringUtil;
 /**
  * 
  * 功能描述:mybatis结果封装类 
